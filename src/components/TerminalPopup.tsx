@@ -24,25 +24,29 @@ export const TerminalPopup: React.FC<TerminalPopupProps> = ({ isOpen, onClose })
     if (!input.trim()) return;
 
     const cmd = input.trim();
+    // Strip leading '>' and any quotes just in case the user types them literally
+    const cleanCmd = cmd.replace(/^>+/, '').replace(/["']/g, '').trim().toLowerCase();
+    
     const newHistory = [...history, `guest@portfolio:~$ ${cmd}`];
     
-    if (cmd === 'clear') {
+    if (cleanCmd === 'clear') {
       setHistory([]);
       setInput('');
       return;
     }
 
-    if (cmd === 'exit') {
+    if (cleanCmd === 'exit') {
       onClose();
       setHistory(['SYS_BOOT...', 'Establishing secure connection...', 'Connection established.', 'Type "help" to see available commands.']);
       setInput('');
       return;
     }
 
-    const response = terminalCommands[cmd] || terminalCommands[cmd.toLowerCase()] || `bash: ${cmd}: command not found`;
+    // Try looking up cleanCmd first, fallback to original if exact match needed
+    const response = terminalCommands[cleanCmd] || terminalCommands[cmd] || `bash: ${cmd}: command not found`;
     
     // Check if it's the date command to run dynamically
-    if (cmd === 'date') {
+    if (cleanCmd === 'date') {
       newHistory.push(new Date().toString());
     } else {
       const lines = response.split('\n');

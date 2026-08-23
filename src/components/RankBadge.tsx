@@ -6,11 +6,27 @@ export const RankBadge: React.FC = () => {
   const { level } = useGameStore();
 
   const getRank = (lvl: number) => {
-    if (lvl <= 5) return { name: 'BRONZE', color: 'text-orange-700', bg: 'bg-orange-700/10', border: 'border-orange-700/50', icon: Shield };
-    if (lvl <= 10) return { name: 'SILVER', color: 'text-zinc-400', bg: 'bg-zinc-400/10', border: 'border-zinc-400/50', icon: Target };
-    if (lvl <= 15) return { name: 'GOLD', color: 'text-amber-500', bg: 'bg-amber-500/10', border: 'border-amber-500/50', icon: Star };
-    if (lvl <= 20) return { name: 'DIAMOND', color: 'text-cyan-400', bg: 'bg-cyan-400/10', border: 'border-cyan-400/50', icon: Trophy };
-    return { name: 'LEGENDARY', color: 'text-purple-500', bg: 'bg-purple-500/10', border: 'border-purple-500/50', icon: Crown };
+    if (lvl === 1) return { 
+      name: 'EXPLORER', 
+      color: 'text-zinc-400', 
+      bg: 'bg-zinc-800/20', 
+      border: 'border-zinc-700/50', 
+      icon: Shield 
+    };
+    if (lvl === 2) return { 
+      name: 'OPERATIVE', 
+      color: 'text-amber-600', 
+      bg: 'bg-amber-600/10', 
+      border: 'border-amber-600/50', 
+      icon: Target 
+    };
+    return { 
+      name: 'ELITE COMMANDER', 
+      color: 'text-amber-400 drop-shadow-[0_0_8px_rgba(251,191,36,0.8)]', 
+      bg: 'bg-amber-500/20 shadow-[0_0_15px_rgba(245,158,11,0.2)]', 
+      border: 'border-amber-400', 
+      icon: Crown 
+    };
   };
 
   const rank = getRank(level);
