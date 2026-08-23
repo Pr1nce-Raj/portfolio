@@ -12,7 +12,7 @@ export const SpacetimeRipple: React.FC = () => {
   const [ripples, setRipples] = useState<Ripple[]>([]);
 
   useEffect(() => {
-    const handlePointerDown = (e: PointerEvent) => {
+    const handleClick = (e: MouseEvent) => {
       // Don't spawn ripples if clicking on an interactive element
       const target = e.target as HTMLElement;
       if (
@@ -37,8 +37,8 @@ export const SpacetimeRipple: React.FC = () => {
       }, 1000);
     };
 
-    window.addEventListener('pointerdown', handlePointerDown);
-    return () => window.removeEventListener('pointerdown', handlePointerDown);
+    window.addEventListener('click', handleClick);
+    return () => window.removeEventListener('click', handleClick);
   }, []);
 
   return (

@@ -29,7 +29,18 @@ export const Header: React.FC = () => {
             
             <nav className="hidden md:flex gap-6 oswald text-sm tracking-wider font-bold">
               {navLinks.map(link => (
-                <a key={link.href} href={link.href} className="relative text-zinc-400 hover:text-amber-500 transition-colors group">
+                <a 
+                  key={link.href} 
+                  href={link.href} 
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const target = document.querySelector(link.href);
+                    if (target) {
+                      target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
+                  className="relative text-zinc-400 hover:text-amber-500 transition-colors group"
+                >
                   {link.label}
                   <span className="absolute left-1/2 -bottom-1 h-0.5 bg-amber-500 w-0 group-hover:w-3/4 -translate-x-1/2 transition-all duration-300"></span>
                 </a>
@@ -97,7 +108,14 @@ export const Header: React.FC = () => {
                   <a 
                     key={link.href} 
                     href={link.href} 
-                    onClick={() => setIsMobileMenuOpen(false)}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setIsMobileMenuOpen(false);
+                      const target = document.querySelector(link.href);
+                      if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }}
                     className="text-zinc-400 hover:text-amber-500 transition-colors block py-2 border-b border-zinc-900"
                   >
                     {link.label}
