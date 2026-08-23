@@ -9,25 +9,24 @@ import { Loadout } from './components/Loadout';
 import { Missions } from './components/Missions';
 import { OffDuty } from './components/OffDuty';
 import { Comms } from './components/Comms';
-import { useKonamiCode } from './hooks/useKonamiCode';
+import { useSecretCode } from './hooks/useSecretCode';
 import { useGameStore } from './store';
-import { fireEasterEggConfetti } from './utils/confetti';
 import { audio } from './utils/audioEngine';
 import { useEffect } from 'react';
+import { TerminalPopup } from './components/TerminalPopup';
 
 function App() {
   const [hasEntered, setHasEntered] = useState(false);
+  const [isTerminalOpen, setIsTerminalOpen] = useState(false);
   const unlockAchievement = useGameStore(state => state.unlockAchievement);
 
-  useKonamiCode(() => {
-    fireEasterEggConfetti();
-    unlockAchievement('easter_egg_hunter');
+  useSecretCode(() => {
+    setIsTerminalOpen(true);
+    unlockAchievement('terminal_hacker');
   });
 
   useEffect(() => {
     if (hasEntered) {
-      audio.startCicadas();
-
       const handleClick = () => audio.playDroplet();
       
       const handleMouseOver = (e: MouseEvent) => {
@@ -64,6 +63,7 @@ function App() {
           </main>
           <Footer />
           <AchievementToast />
+          <TerminalPopup isOpen={isTerminalOpen} onClose={() => setIsTerminalOpen(false)} />
         </>
       )}
     </div>

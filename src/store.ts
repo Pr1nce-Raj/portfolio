@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { achievements } from './data/achievements';
 import { getLevelFromXP } from './utils/xpCalculator';
+import { toast } from 'sonner';
 
 interface GameStoreState {
   xp: number;
@@ -41,6 +42,13 @@ export const useGameStore = create<GameStoreState>()(
         set((state) => {
           const newXP = state.xp + amount;
           const newLevel = getLevelFromXP(newXP);
+          
+          if (newLevel > state.level) {
+            setTimeout(() => {
+              toast.success(`LEVEL UP! You reached Tier ${newLevel}!`);
+            }, 500); // slight delay to allow achievement toast to pop first
+          }
+          
           return { xp: newXP, level: newLevel };
         });
       },
@@ -51,6 +59,11 @@ export const useGameStore = create<GameStoreState>()(
         }
         const achievement = achievements.find((a) => a.id === id);
         if (achievement) {
+          toast(`ACHIEVEMENT UNLOCKED: ${achievement.name}`, {
+            description: `+${achievement.xp} XP Gained`,
+            icon: achievement.icon,
+          });
+          
           set((state) => ({ achievements: [...state.achievements, id] }));
           get().addXP(achievement.xp);
           return true;

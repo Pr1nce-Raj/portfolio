@@ -7,5 +7,5 @@ export const achievements: Omit<Achievement, 'unlockedAt'>[] = [
   { id: 'missions_reviewed', name: 'Missions Reviewed', description: 'Checked out the campaign logs.', xp: 30, icon: '📂' },
   { id: 'offduty_scanned', name: 'Off-Duty Scanned', description: 'Found the gaming records.', xp: 20, icon: '🎮' },
   { id: 'comms_established', name: 'Comms Established', description: 'Reached the secure communications footer.', xp: 20, icon: '💬' },
-  { id: 'easter_egg_hunter', name: 'Easter Egg Hunter', description: 'Found the Konami Code secret!', xp: 250, icon: '🥚' }
+  { id: 'terminal_hacker', name: 'Terminal Hacker', description: 'Gained root access via the hidden terminal.', xp: 250, icon: '💻' }
 ];
