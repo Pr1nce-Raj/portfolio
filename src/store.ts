@@ -11,7 +11,7 @@ interface GameStoreState {
   visitedSections: string[];
   terminalCommandsRun: number;
   soundEnabled: boolean;
-  theme: 'dark' | 'light';
+  theme: 'dark' | 'night_vision';
   achievementPanelOpen: boolean;
   addXP: (amount: number) => void;
   unlockAchievement: (id: string) => boolean;
@@ -82,7 +82,16 @@ export const useGameStore = create<GameStoreState>()(
         set((state) => ({ terminalCommandsRun: state.terminalCommandsRun + 1 }));
       },
       toggleSound: () => set((state) => ({ soundEnabled: !state.soundEnabled })),
-      toggleTheme: () => set((state) => ({ theme: state.theme === 'dark' ? 'light' : 'dark' })),
+      toggleTheme: () => {
+        const state = get();
+        const newTheme = state.theme === 'dark' ? 'night_vision' : 'dark';
+        set({ theme: newTheme });
+        
+        // Trigger achievement if they switch to night vision
+        if (newTheme === 'night_vision') {
+          state.unlockAchievement('night_owl');
+        }
+      },
       setAchievementPanelOpen: (open: boolean) => set({ achievementPanelOpen: open }),
       resetProgress: () => set(initialState),
     }),

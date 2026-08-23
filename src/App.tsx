@@ -14,11 +14,14 @@ import { useGameStore } from './store';
 import { audio } from './utils/audioEngine';
 import { useEffect } from 'react';
 import { TerminalPopup } from './components/TerminalPopup';
+import { NightVisionOverlay } from './components/NightVisionOverlay';
+import { SpacetimeRipple } from './components/SpacetimeRipple';
 
 function App() {
   const [hasEntered, setHasEntered] = useState(false);
   const [isTerminalOpen, setIsTerminalOpen] = useState(false);
   const unlockAchievement = useGameStore(state => state.unlockAchievement);
+  const theme = useGameStore(state => state.theme);
 
   useSecretCode(() => {
     setIsTerminalOpen(true);
@@ -27,8 +30,6 @@ function App() {
 
   useEffect(() => {
     if (hasEntered) {
-      const handleClick = () => audio.playDroplet();
-      
       const handleMouseOver = (e: MouseEvent) => {
         const target = e.target as HTMLElement;
         if (target.tagName === 'A' || target.tagName === 'BUTTON' || target.closest('a') || target.closest('button')) {
@@ -36,18 +37,16 @@ function App() {
         }
       };
 
-      window.addEventListener('click', handleClick);
       window.addEventListener('mouseover', handleMouseOver);
 
       return () => {
-        window.removeEventListener('click', handleClick);
         window.removeEventListener('mouseover', handleMouseOver);
       };
     }
   }, [hasEntered]);
 
   return (
-    <div className="min-h-screen flex flex-col selection:bg-amber-500/30 selection:text-amber-100">
+    <div className={`min-h-screen flex flex-col selection:bg-amber-500/30 selection:text-amber-100 ${theme === 'night_vision' ? 'cursor-crosshair' : ''}`}>
       {!hasEntered && <EntryScreen onEnter={() => setHasEntered(true)} />}
       
       {hasEntered && (
@@ -64,6 +63,8 @@ function App() {
           <Footer />
           <AchievementToast />
           <TerminalPopup isOpen={isTerminalOpen} onClose={() => setIsTerminalOpen(false)} />
+          <NightVisionOverlay />
+          <SpacetimeRipple />
         </>
       )}
     </div>

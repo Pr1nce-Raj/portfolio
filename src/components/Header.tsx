@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { Trophy, FileText } from 'lucide-react';
+import { Trophy, FileText, Eye, EyeOff } from 'lucide-react';
 import { BattlePassBar } from './BattlePassBar';
 import { RankBadge } from './RankBadge';
 import { AchievementPanel } from './AchievementPanel';
+import { useGameStore } from '../store';
 
 export const Header: React.FC = () => {
   const [isTrophyRoomOpen, setIsTrophyRoomOpen] = useState(false);
+  const { theme, toggleTheme } = useGameStore();
 
   return (
     <>
@@ -51,6 +53,15 @@ export const Header: React.FC = () => {
               <FileText className="w-4 h-4 group-hover:scale-110 transition-transform" />
               <span className="hidden sm:inline">RESUME</span>
             </a>
+            
+            <button 
+              onClick={toggleTheme}
+              className={`relative z-[60] p-2 border transition-colors clip-angled group ${theme === 'night_vision' ? 'bg-green-500/20 border-green-500 text-green-500' : 'bg-zinc-900 border-zinc-800 hover:border-amber-500 hover:text-amber-500 text-zinc-400'}`}
+              title="Toggle Night Vision"
+            >
+              {theme === 'night_vision' ? <Eye className="w-5 h-5" /> : <EyeOff className="w-5 h-5 group-hover:scale-110 transition-transform" />}
+            </button>
+
             <button 
               onClick={() => setIsTrophyRoomOpen(true)}
               className="p-2 bg-zinc-900 border border-zinc-800 hover:border-amber-500 hover:text-amber-500 transition-colors clip-angled text-zinc-400 group"
