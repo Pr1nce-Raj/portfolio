@@ -12,14 +12,14 @@ export const Hero: React.FC = () => {
     <section id="hero" className="relative min-h-screen flex items-center justify-center bg-zinc-950 overflow-hidden pt-20">
       {/* Tactical Grid Background */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
-      
+
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="mb-4 flex items-center gap-3"
+            className="mb-4 flex items-center gap-3 mt-12 md:mt-0"
           >
             <Crosshair className="text-amber-500 w-6 h-6" />
             <span className="text-amber-500 font-mono tracking-[0.2em] text-sm font-bold uppercase">Player Profile Initiated</span>
@@ -98,29 +98,6 @@ export const Hero: React.FC = () => {
             >
               Initiate Comms
             </a>
-          </motion.div>
-
-          {/* Mobile Quick Navigation (Replaces Dropdown) */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="md:hidden grid grid-cols-2 sm:grid-cols-4 gap-3 mt-8"
-          >
-            {[
-              { id: 'dossier', label: 'DOSSIER' },
-              { id: 'loadout', label: 'LOADOUT' },
-              { id: 'missions', label: 'MISSIONS' },
-              { id: 'comms', label: 'COMMS' },
-            ].map(link => (
-              <a
-                key={link.id}
-                href={`#${link.id}`}
-                className="py-3 px-2 bg-zinc-900/80 border border-zinc-800 hover:border-amber-500 hover:text-amber-500 text-zinc-400 transition-colors clip-angled font-bold oswald text-xs sm:text-sm tracking-wider text-center"
-              >
-                {link.label}
-              </a>
-            ))}
           </motion.div>
         </div>
       </div>

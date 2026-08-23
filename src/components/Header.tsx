@@ -79,6 +79,21 @@ export const Header: React.FC = () => {
             </button>
           </div>
         </div>
+
+        {/* Mobile Sticky Sub-Nav (Replaces Dropdown) */}
+        <div className="md:hidden w-full border-t border-zinc-800 bg-zinc-950/95 px-2 py-2">
+          <div className="flex gap-2">
+            {navLinks.map(link => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="flex-1 py-1.5 px-0.5 bg-zinc-900 border border-zinc-800 hover:border-amber-500 hover:bg-amber-500/10 hover:text-amber-500 text-zinc-400 transition-colors clip-angled font-bold oswald text-[10px] tracking-wider text-center"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+        </div>
       </header>
 
       <AchievementPanel 
