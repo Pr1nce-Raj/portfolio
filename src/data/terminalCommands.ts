@@ -1,0 +1,16 @@
+export const terminalCommands: Record<string, string> = {
+  help: 'Available commands:\n  help      - Show this help message\n  about     - About Prince Raj\n  skills    - List skills\n  projects  - List projects\n  contact   - Show contact info\n  education - Show education details\n  clear     - Clear terminal\n  cat       - Read a file\n  whoami    - Display current user\n  ls        - List directory contents\n  date      - Display current date and time',
+  about: 'Prince Raj - Pragmatic Python Developer grounded in core computer science fundamentals—data structures, algorithms, and OOP. Focused on clean, testable architecture and maintainable code.',
+  skills: 'Skills:\n- Python 3\n- JavaScript (ES6+)\n- HTML5\n- CSS3\n- C Programming\n- React\n- Firebase\n- Git/GitHub\n- Linux\n- PowerShell',
+  projects: 'Projects:\n1. Study Roadmap Tracker - Multi-user study planning with Firebase.\n2. Threat Monitor - Cybersecurity tool for network scanning.\n3. ClassroomAI-Monitor - AI-driven classroom engagement tracking.\n4. CampusGigs - Decentralized student gig-economy platform.\n5. Solution Challenge - Sustainability tech solutions.',
+  contact: 'Contact Info:\nEmail: pr663570@gmail.com\nPhone: +91 8757625393\nLinkedIn: https://www.linkedin.com/in/pr1nceraj/\nGitHub: https://github.com/Pr1nce-Raj',
+  education: 'Education:\n- B.Tech CSE (IoT) @ Bakhtiyarpur Engineering College (Expected July 2029, GPA 7.8)\n- 12th (72%)\n- 10th (92.4%)',
+  clear: '',
+  'cat resume.txt': 'Prince Raj\nPython Developer\n\nExperience:\n- Building cool stuff\n- Winning hackathons (ByteHack, Science Mela)\n\nEducation: B.Tech CSE (IoT)',
+  'sudo rm -rf /': 'Nice try! 😏 Permission denied. This portfolio is protected by plot armor.',
+  matrix: 'MATRIX_MODE',
+  whoami: 'prince_raj — Advanced Python Developer',
+  ls: 'about.md  skills.json  projects/  resume.txt  .secret',
+  'cat .secret': 'You found a secret! 🎉 Try the Konami Code: ↑↑↓↓←→←→BA',
+  date: new Date().toString(),
+};

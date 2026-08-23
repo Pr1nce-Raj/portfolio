@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prince Raj — Resume</title>
+    <style>
+        /* === ATS-Optimized Print-Ready Resume === */
+        @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'EB Garamond', 'Times New Roman', Georgia, serif;
+            font-size: 11.5pt;
+            line-height: 1.4;
+            color: #1a1a1a;
+            background: #f5f5f5;
+        }
+
+        .page {
+            width: 8.5in;
+            min-height: 11in;
+            margin: 0.5in auto;
+            padding: 0.55in 0.65in;
+            background: white;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        /* --- Header / Name Block --- */
+        .header {
+            text-align: center;
+            margin-bottom: 10pt;
+            padding-bottom: 8pt;
+            border-bottom: 1.5pt solid #1a1a1a;
+        }
+
+        .header h1 {
+            font-size: 22pt;
+            font-weight: 700;
+            letter-spacing: 2pt;
+            text-transform: uppercase;
+            margin-bottom: 5pt;
+            color: #000;
+        }
+
+        .contact-line {
+            font-size: 10pt;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .contact-line a {
+            color: #1a1a1a;
+            text-decoration: none;
+        }
+
+        .contact-line .sep {
+            margin: 0 4pt;
+            color: #888;
+        }
+
+        /* --- Section Titles --- */
+        .section-title {
+            font-size: 12pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5pt;
+            border-bottom: 0.75pt solid #555;
+            padding-bottom: 2pt;
+            margin-top: 14pt;
+            margin-bottom: 6pt;
+            color: #000;
+        }
+
+        /* --- Summary --- */
+        .summary {
+            font-size: 11pt;
+            line-height: 1.45;
+            color: #2a2a2a;
+            text-align: justify;
+        }
+
+        /* --- Entry Blocks (Education, Experience, Projects) --- */
+        .entry {
+            margin-bottom: 8pt;
+        }
+
+        .entry-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+        }
+
+        .entry-title {
+            font-weight: 700;
+            font-size: 11.5pt;
+        }
+
+        .entry-meta {
+            font-style: italic;
+            font-size: 10.5pt;
+            color: #444;
+        }
+
+        .entry-subtitle {
+            font-style: italic;
+            font-size: 10.5pt;
+            color: #444;
+            margin-bottom: 2pt;
+        }
+
+        /* --- Bullet Lists --- */
+        ul {
+            margin-left: 18pt;
+            margin-top: 2pt;
+        }
+
+        ul li {
+            margin-bottom: 2pt;
+            font-size: 11pt;
+            line-height: 1.4;
+            color: #2a2a2a;
+        }
+
+        /* --- Skills Grid (ATS-safe: plain text) --- */
+        .skills-block {
+            margin-top: 2pt;
+        }
+
+        .skill-row {
+            margin-bottom: 3pt;
+            font-size: 11pt;
+            line-height: 1.45;
+        }
+
+        .skill-label {
+            font-weight: 700;
+            display: inline;
+        }
+
+        /* --- Links Section --- */
+        .links-row {
+            font-size: 10.5pt;
+            text-align: center;
+            margin-top: 2pt;
+        }
+
+        .links-row a {
+            color: #0066cc;
+            text-decoration: underline;
+        }
+
+        /* --- Print Styles --- */
+        @media print {
+            body {
+                background: white;
+            }
+
+            .page {
+                width: 100%;
+                min-height: auto;
+                margin: 0;
+                padding: 0.5in 0.6in;
+                box-shadow: none;
+            }
+
+            .no-print {
+                display: none !important;
+            }
+        }
+
+        /* --- Print Button (screen only) --- */
+        .print-btn {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: #1a1a1a;
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+            z-index: 100;
+        }
+
+        .print-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(0,0,0,0.4);
+        }
+    </style>
+</head>
+<body>
+
+    <button class="print-btn no-print" onclick="window.print()">📄 Save as PDF (Ctrl+P)</button>
+
+    <div class="page">
+
+        <!-- ===== HEADER ===== -->
+        <div class="header">
+            <h1>Prince Raj</h1>
+            <div class="contact-line">
+                pr663570@gmail.com
+                <span class="sep">|</span>
+                +91 8757625393
+                <span class="sep">|</span>
+                Discord: raj._.prince
+            </div>
+            <div class="links-row">
+                <a href="https://www.linkedin.com/in/pr1nceraj/">LinkedIn</a>
+                <span class="sep">|</span>
+                <a href="https://github.com/Pr1nce-Raj">GitHub</a>
+                <span class="sep">|</span>
+                <a href="https://leetcode.com/u/Prince-RaJ/">LeetCode</a>
+                <span class="sep">|</span>
+                <a href="https://www.credly.com/users/prince-raj.9d709f94/badges">Credly</a>
+            </div>
+        </div>
+
+        <!-- ===== PROFESSIONAL SUMMARY ===== -->
+        <div class="section-title">Professional Summary</div>
+        <p class="summary">
+            Pragmatic Python Developer grounded in core computer science fundamentals — data structures, algorithms, and OOP. Focused on clean, testable architecture and maintainable code over clever one-liners. Highly collaborative team player with a proven ability to build strong backend logic, deploy cloud-synced applications, and drive projects to success in high-pressure hackathon environments. Active open-source contributor on GitHub with a commitment to daily problem-solving practice on LeetCode.
+        </p>
+
+        <!-- ===== EDUCATION ===== -->
+        <div class="section-title">Education</div>
+
+        <div class="entry">
+            <div class="entry-header">
+                <span class="entry-title">B.Tech in Computer Science & Engineering (IoT Specialization)</span>
+                <span class="entry-meta">Expected July 2029</span>
+            </div>
+            <div class="entry-subtitle">Bakhtiyarpur Engineering College, Bihar</div>
+            <ul>
+                <li>1st Semester GPA: 7.8 / 10</li>
+            </ul>
+        </div>
+
+        <div class="entry">
+            <div class="entry-header">
+                <span class="entry-title">12th Grade (Senior Secondary)</span>
+                <span class="entry-meta">2024</span>
+            </div>
+            <div class="entry-subtitle">Oasis Residential Public School, Hajipur, Bihar</div>
+            <ul>
+                <li>Percentage: 72%</li>
+            </ul>
+        </div>
+
+        <div class="entry">
+            <div class="entry-header">
+                <span class="entry-title">10th Grade (Secondary)</span>
+                <span class="entry-meta">2022</span>
+            </div>
+            <div class="entry-subtitle">Oasis Residential Public School, Hajipur, Bihar</div>
+            <ul>
+                <li>Percentage: 92.4%</li>
+            </ul>
+        </div>
+
+        <!-- ===== TECHNICAL SKILLS ===== -->
+        <div class="section-title">Technical Skills</div>
+        <div class="skills-block">
+            <div class="skill-row">
+                <span class="skill-label">Programming Languages:</span> Python 3, JavaScript (ES6+), HTML5, CSS3, C, Java (Learning)
+            </div>
+            <div class="skill-row">
+                <span class="skill-label">Frameworks & Tools:</span> React, Firebase (Auth, Firestore, Hosting), Git/GitHub, Linux, PowerShell, VS Code
+            </div>
+            <div class="skill-row">
+                <span class="skill-label">Core Competencies:</span> OOP, Data Structures & Algorithms, Network Security (WiFi/Bluetooth), Cloud Syncing
+            </div>
+            <div class="skill-row">
+                <span class="skill-label">Soft Skills:</span> Cross-functional teamwork, collaborative problem-solving, project strategy, technical communication
+            </div>
+        </div>
+
+        <!-- ===== PROJECTS ===== -->
+        <div class="section-title">Projects</div>
+
+        <div class="entry">
+            <div class="entry-header">
+                <span class="entry-title">Study Roadmap Tracker</span>
+                <span class="entry-meta"><a href="https://studytracker-ccb52.web.app" style="color:#444; font-style:italic;">Live Demo ↗</a></span>
+            </div>
+            <ul>
+                <li>Engineered and deployed a multi-user study planning application utilizing Vanilla JavaScript and Firebase.</li>
+                <li>Implemented Google Authentication, real-time Cloud Firestore syncing with per-user data isolation, and robust offline fallback via localStorage.</li>
+            </ul>
+        </div>
+
+        <div class="entry">
+            <div class="entry-header">
+                <span class="entry-title">Threat Monitor</span>
+                <span class="entry-meta">In Progress</span>
+            </div>
+            <ul>
+                <li>Developing a Python-based cybersecurity tool to actively scan and monitor WiFi and Bluetooth networks for potential vulnerabilities and threats.</li>
+                <li>Implementing real-time detection and logging of suspicious network activity for local network security analysis.</li>
+            </ul>
+        </div>
+
+        <!-- ===== HACKATHONS ===== -->
+        <div class="section-title">Hackathons</div>
+
+        <div class="entry">
+            <div class="entry-header">
+                <span class="entry-title">ClassroomAI-Monitor — ByteHack Hackathon</span>
+                <span class="entry-meta">🥇 1st Place Winner</span>
+            </div>
+            <ul>
+                <li>Built an AI-driven classroom engagement tracking system utilizing a Python backend and a React dashboard for real-time monitoring.</li>
+            </ul>
+        </div>
+
+        <div class="entry">
+            <div class="entry-header">
+                <span class="entry-title">CampusGigs — Science Mela Hackathon</span>
+                <span class="entry-meta">🥇 1st Place Winner</span>
+            </div>
+            <ul>
+                <li>Served as Project Strategist & Speaker for team DragonDevZ to build a decentralized student gig-economy platform featuring AI-powered gig descriptions and a simulated UPI wallet.</li>
+            </ul>
+        </div>
+
+        <div class="entry">
+            <div class="entry-header">
+                <span class="entry-title">Solution Challenge — Team CodeXdev</span>
+                <span class="entry-meta">Participant</span>
+            </div>
+            <ul>
+                <li>Collaborated with team CodeXdev to build innovative tech solutions addressing global sustainability goals.</li>
+            </ul>
+        </div>
+
+        <!-- ===== CERTIFICATIONS & ACHIEVEMENTS ===== -->
+        <div class="section-title">Certifications & Achievements</div>
+
+        <div class="entry">
+            <ul>
+                <li><span style="font-weight:700;">Daily Problem Solving:</span> Actively solving Data Structures & Algorithms problems daily on LeetCode to continuously strengthen core problem-solving fundamentals.</li>
+                <li><span style="font-weight:700;">Google Cloud Arcade 2026:</span> Earned multiple Credly badges by completing structured labs and challenges focused on cloud infrastructure and deployment.</li>
+            </ul>
+        </div>
+
+        <!-- ===== LANGUAGES ===== -->
+        <div class="section-title">Languages</div>
+        <div class="skills-block">
+            <div class="skill-row">
+                <span class="skill-label">English:</span> Professional Proficiency
+                <span class="sep" style="margin: 0 10pt; color:#888;">|</span>
+                <span class="skill-label">Hindi:</span> Native Speaker
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
