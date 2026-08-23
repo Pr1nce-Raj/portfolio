@@ -14,6 +14,11 @@ export function useSecretCode(callback: () => void) {
       
       const key = e.key.toLowerCase();
       
+      // Ignore modifier keys so holding shift for < and > doesn't break the sequence
+      if (['shift', 'control', 'alt', 'meta', 'capslock'].includes(key)) {
+        return;
+      }
+
       setSequence((prev) => {
         const nextSequence = [...prev, key];
         

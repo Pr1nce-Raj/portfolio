@@ -75,6 +75,20 @@ export const AchievementPanel: React.FC<AchievementPanelProps> = ({ isOpen, onCl
                 );
               })}
             </div>
+
+            <div className="p-4 border-t border-zinc-800 bg-zinc-900 flex justify-end">
+              <button 
+                onClick={() => {
+                  if (confirm('Are you sure you want to completely wipe your XP and local save data?')) {
+                    useGameStore.getState().resetProgress();
+                    window.location.reload();
+                  }
+                }}
+                className="px-4 py-2 bg-red-500/10 border border-red-500/50 text-red-500 hover:bg-red-500 hover:text-white transition-colors font-bold text-xs uppercase tracking-widest clip-angled"
+              >
+                Reset Save Data
+              </button>
+            </div>
           </motion.div>
         </motion.div>
       )}
