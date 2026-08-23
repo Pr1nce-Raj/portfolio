@@ -18,12 +18,37 @@ export const Header: React.FC = () => {
     { href: '#comms', label: 'COMMS' }
   ];
 
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string, isMobile: boolean) => {
+    e.preventDefault();
+    
+    if (isMobile) {
+      setIsMobileMenuOpen(false);
+    }
+    
+    const target = document.querySelector(href);
+    if (target) {
+      // Offset by header height (16 units = 64px)
+      const headerOffset = 64;
+      const elementPosition = target.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.scrollY - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <>
       <header className="sticky top-0 z-40 bg-zinc-950/95 border-b border-zinc-800 backdrop-blur-none">
         <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2 lg:gap-8 flex-shrink-0">
-            <a href="#hero" className="text-[13px] sm:text-xl font-bold oswald text-zinc-100 tracking-widest hover:text-amber-500 transition-colors whitespace-nowrap">
+            <a 
+              href="#hero" 
+              onClick={(e) => handleScroll(e, '#hero', false)}
+              className="text-[13px] sm:text-xl font-bold oswald text-zinc-100 tracking-widest hover:text-amber-500 transition-colors whitespace-nowrap"
+            >
               PRINCE_RAJ <span className="text-amber-500">//</span> PORTFOLIO
             </a>
             
@@ -32,13 +57,7 @@ export const Header: React.FC = () => {
                 <a 
                   key={link.href} 
                   href={link.href} 
-                  onClick={(e) => {
-                    e.preventDefault();
-                    const target = document.querySelector(link.href);
-                    if (target) {
-                      target.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }}
+                  onClick={(e) => handleScroll(e, link.href, false)}
                   className="relative text-zinc-400 hover:text-amber-500 transition-colors group"
                 >
                   {link.label}
@@ -101,21 +120,14 @@ export const Header: React.FC = () => {
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: 'auto', opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
-              className="md:hidden border-b border-zinc-800 bg-zinc-950/95 overflow-hidden"
+              className="md:hidden absolute top-16 left-0 right-0 border-b border-zinc-800 bg-zinc-950/95 overflow-hidden shadow-2xl z-40"
             >
               <nav className="flex flex-col p-4 gap-4 oswald text-sm tracking-wider font-bold">
                 {navLinks.map(link => (
                   <a 
                     key={link.href} 
                     href={link.href} 
-                    onClick={(e) => {
-                      e.preventDefault();
-                      setIsMobileMenuOpen(false);
-                      const target = document.querySelector(link.href);
-                      if (target) {
-                        target.scrollIntoView({ behavior: 'smooth' });
-                      }
-                    }}
+                    onClick={(e) => handleScroll(e, link.href, true)}
                     className="text-zinc-400 hover:text-amber-500 transition-colors block py-2 border-b border-zinc-900"
                   >
                     {link.label}
