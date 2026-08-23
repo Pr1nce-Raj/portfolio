@@ -90,6 +90,16 @@ export const useGameStore = create<GameStoreState>()(
         // Trigger achievement if they switch to night vision
         if (newTheme === 'night_vision') {
           state.unlockAchievement('night_owl');
+          
+          // Mobile-only optimization warning
+          if (typeof window !== 'undefined' && window.innerWidth < 768) {
+            setTimeout(() => {
+              toast.warning('Tactical Advisory', {
+                description: 'For the smoothest zero-latency Night Vision experience, access this terminal via Desktop.',
+                duration: 5000,
+              });
+            }, 800); // Delayed slightly so it doesn't overlap identically with the achievement toast
+          }
         }
       },
       setAchievementPanelOpen: (open: boolean) => set({ achievementPanelOpen: open }),

@@ -22,12 +22,9 @@ export const Header: React.FC = () => {
     <>
       <header className="sticky top-0 z-40 bg-zinc-950/95 border-b border-zinc-800 backdrop-blur-none">
         <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-4 lg:gap-8">
-            <a href="#hero" className="text-xl font-bold oswald text-zinc-100 tracking-widest hover:text-amber-500 transition-colors hidden sm:block">
-              PRINCE_RAJ <span className="text-amber-500">//</span> PROFILE
-            </a>
-            <a href="#hero" className="text-lg font-bold oswald text-zinc-100 tracking-widest hover:text-amber-500 transition-colors sm:hidden">
-              PRINCE <span className="text-amber-500">//</span> P
+          <div className="flex items-center gap-2 lg:gap-8 flex-shrink-0">
+            <a href="#hero" className="text-[13px] sm:text-xl font-bold oswald text-zinc-100 tracking-widest hover:text-amber-500 transition-colors whitespace-nowrap">
+              PRINCE_RAJ <span className="text-amber-500">//</span> PORTFOLIO
             </a>
             
             <nav className="hidden md:flex gap-6 oswald text-sm tracking-wider font-bold">
