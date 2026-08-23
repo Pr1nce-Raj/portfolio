@@ -99,6 +99,29 @@ export const Hero: React.FC = () => {
               Initiate Comms
             </a>
           </motion.div>
+
+          {/* Mobile Quick Navigation (Replaces Dropdown) */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="md:hidden grid grid-cols-2 sm:grid-cols-4 gap-3 mt-8"
+          >
+            {[
+              { id: 'dossier', label: 'DOSSIER' },
+              { id: 'loadout', label: 'LOADOUT' },
+              { id: 'missions', label: 'MISSIONS' },
+              { id: 'comms', label: 'COMMS' },
+            ].map(link => (
+              <a
+                key={link.id}
+                href={`#${link.id}`}
+                className="py-3 px-2 bg-zinc-900/80 border border-zinc-800 hover:border-amber-500 hover:text-amber-500 text-zinc-400 transition-colors clip-angled font-bold oswald text-xs sm:text-sm tracking-wider text-center"
+              >
+                {link.label}
+              </a>
+            ))}
+          </motion.div>
         </div>
       </div>
     </section>

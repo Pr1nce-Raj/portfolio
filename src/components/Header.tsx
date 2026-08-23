@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
-import { Trophy, FileText, Eye, EyeOff, Menu, X } from 'lucide-react';
+import { Trophy, FileText, Eye, EyeOff } from 'lucide-react';
 import { BattlePassBar } from './BattlePassBar';
 import { RankBadge } from './RankBadge';
 import { AchievementPanel } from './AchievementPanel';
 import { useGameStore } from '../store';
-import { motion, AnimatePresence } from 'motion/react';
 
 export const Header: React.FC = () => {
   const [isTrophyRoomOpen, setIsTrophyRoomOpen] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { theme, toggleTheme } = useGameStore();
 
   const navLinks = [
@@ -18,27 +16,6 @@ export const Header: React.FC = () => {
     { href: '#comms', label: 'COMMS' }
   ];
 
-  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string, isMobile: boolean) => {
-    e.preventDefault();
-    
-    if (isMobile) {
-      setIsMobileMenuOpen(false);
-    }
-    
-    const target = document.querySelector(href);
-    if (target) {
-      // Offset by header height (16 units = 64px)
-      const headerOffset = 64;
-      const elementPosition = target.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.scrollY - headerOffset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
-  };
-
   return (
     <>
       <header className="sticky top-0 z-40 bg-zinc-950/95 border-b border-zinc-800 backdrop-blur-none">
@@ -46,7 +23,6 @@ export const Header: React.FC = () => {
           <div className="flex items-center gap-2 lg:gap-8 flex-shrink-0">
             <a 
               href="#hero" 
-              onClick={(e) => handleScroll(e, '#hero', false)}
               className="text-[13px] sm:text-xl font-bold oswald text-zinc-100 tracking-widest hover:text-amber-500 transition-colors whitespace-nowrap"
             >
               PRINCE_RAJ <span className="text-amber-500">//</span> PORTFOLIO
@@ -57,7 +33,6 @@ export const Header: React.FC = () => {
                 <a 
                   key={link.href} 
                   href={link.href} 
-                  onClick={(e) => handleScroll(e, link.href, false)}
                   className="relative text-zinc-400 hover:text-amber-500 transition-colors group"
                 >
                   {link.label}
@@ -102,45 +77,8 @@ export const Header: React.FC = () => {
             >
               <Trophy className="w-4 h-4 lg:w-5 lg:h-5 group-hover:scale-110 transition-transform" />
             </button>
-
-            {/* Mobile Hamburger Toggle */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 bg-zinc-900 border border-zinc-800 hover:border-amber-500 hover:text-amber-500 transition-colors clip-angled text-zinc-400"
-            >
-              {isMobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
-            </button>
           </div>
         </div>
-
-        {/* Mobile Dropdown Menu */}
-        <AnimatePresence>
-          {isMobileMenuOpen && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: 'auto', opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              className="md:hidden absolute top-16 left-0 right-0 border-b border-zinc-800 bg-zinc-950/95 overflow-hidden shadow-2xl z-40"
-            >
-              <nav className="flex flex-col p-4 gap-4 oswald text-sm tracking-wider font-bold">
-                {navLinks.map(link => (
-                  <a 
-                    key={link.href} 
-                    href={link.href} 
-                    onClick={(e) => handleScroll(e, link.href, true)}
-                    className="text-zinc-400 hover:text-amber-500 transition-colors block py-2 border-b border-zinc-900"
-                  >
-                    {link.label}
-                  </a>
-                ))}
-                {/* Show Rank on Mobile since it was hidden in the top bar to save space */}
-                <div className="pt-2 sm:hidden flex justify-center">
-                  <RankBadge />
-                </div>
-              </nav>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </header>
 
       <AchievementPanel 
