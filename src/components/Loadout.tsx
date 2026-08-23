@@ -7,7 +7,7 @@ import { useSectionTracker } from '../hooks/useSectionTracker';
 export const Loadout: React.FC = () => {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  useSectionTracker('skills');
+  useSectionTracker('skills', 'loadout_inspected');
 
   // Using SimpleIcons for accurate brand logos, themed to Amber-500 (#f59e0b)
   const proficiencies = [

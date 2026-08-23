@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Trophy } from 'lucide-react';
+import { Trophy, FileText } from 'lucide-react';
 import { BattlePassBar } from './BattlePassBar';
 import { RankBadge } from './RankBadge';
 import { AchievementPanel } from './AchievementPanel';
@@ -36,16 +36,27 @@ export const Header: React.FC = () => {
             </nav>
           </div>
 
-          <div className="flex items-center gap-4 flex-1 justify-end">
+          <div className="flex items-center gap-3 flex-1 justify-end">
             <div className="hidden lg:block w-48">
               <BattlePassBar small />
             </div>
             <RankBadge />
+            <a 
+              href="https://drive.google.com/file/d/1fbIQlElMTKo1eXbC2NgvSP8svz8WXTGp/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3 py-2 bg-amber-500/10 border border-amber-500/50 hover:bg-amber-500 hover:text-zinc-950 text-amber-500 transition-colors clip-angled flex items-center gap-2 text-xs font-bold oswald uppercase tracking-wider group"
+              title="View ATS Resume"
+            >
+              <FileText className="w-4 h-4 group-hover:scale-110 transition-transform" />
+              <span className="hidden sm:inline">RESUME</span>
+            </a>
             <button 
               onClick={() => setIsTrophyRoomOpen(true)}
-              className="p-2 bg-zinc-900 border border-zinc-800 hover:border-amber-500 hover:text-amber-500 transition-colors clip-angled text-zinc-400"
+              className="p-2 bg-zinc-900 border border-zinc-800 hover:border-amber-500 hover:text-amber-500 transition-colors clip-angled text-zinc-400 group"
+              title="Trophy Room"
             >
-              <Trophy className="w-5 h-5" />
+              <Trophy className="w-5 h-5 group-hover:scale-110 transition-transform" />
             </button>
           </div>
         </div>

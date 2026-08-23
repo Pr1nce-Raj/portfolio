@@ -1,10 +1,13 @@
-import React from 'react';
+﻿import React from 'react';
 import { motion } from 'motion/react';
 import { TypeAnimation } from 'react-type-animation';
 import { Crosshair, Shield, Zap, ChevronDown } from 'lucide-react';
 import { profileData } from '../data/profile';
+import { useSectionTracker } from '../hooks/useSectionTracker';
 
 export const Hero: React.FC = () => {
+  useSectionTracker('hero', 'first_landing');
+
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center bg-zinc-950 overflow-hidden pt-20">
       {/* Tactical Grid Background */}
