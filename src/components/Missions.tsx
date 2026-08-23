@@ -8,7 +8,7 @@ import { TacticalCard } from './TacticalCard';
 export const Missions: React.FC = () => {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  useSectionTracker('projects', 'missions_reviewed');
+  useSectionTracker(isInView, 'projects', 'missions_reviewed');
 
   return (
     <section id="missions" className="py-24 bg-zinc-950 border-t border-zinc-900" ref={ref}>

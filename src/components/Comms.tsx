@@ -6,7 +6,7 @@ import { useSectionTracker } from '../hooks/useSectionTracker';
 export const Comms: React.FC = () => {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  useSectionTracker('contact', 'comms_established');
+  useSectionTracker(isInView, 'contact', 'comms_established');
 
   const [formState, setFormState] = useState<'idle' | 'sending' | 'success'>('idle');
 

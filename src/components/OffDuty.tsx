@@ -6,7 +6,7 @@ import { useSectionTracker } from '../hooks/useSectionTracker';
 export const OffDuty: React.FC = () => {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  useSectionTracker('hobbies', 'offduty_scanned');
+  useSectionTracker(isInView, 'hobbies', 'offduty_scanned');
 
   const games = [
     { name: 'Call of Duty: Mobile', rank: 'Legendary', role: 'Slayer/Sniper', exp: '7 YRS', status: 'ACTIVE' },

@@ -7,7 +7,7 @@ import { useSectionTracker } from '../hooks/useSectionTracker';
 export const Dossier: React.FC = () => {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  useSectionTracker('about', 'dossier_unlocked');
+  useSectionTracker(isInView, 'about', 'dossier_unlocked');
 
   return (
     <section id="dossier" className="py-24 bg-zinc-950 border-t border-zinc-900" ref={ref}>
