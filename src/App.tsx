@@ -45,6 +45,15 @@ function App() {
     }
   }, [hasEntered]);
 
+  // Sync theme with body class to fix global CSS cursor overrides
+  useEffect(() => {
+    if (theme === 'night_vision') {
+      document.body.classList.add('night-vision');
+    } else {
+      document.body.classList.remove('night-vision');
+    }
+  }, [theme]);
+
   return (
     <div className={`min-h-screen flex flex-col selection:bg-amber-500/30 selection:text-amber-100 ${theme === 'night_vision' ? 'cursor-crosshair' : ''}`}>
       {!hasEntered && <EntryScreen onEnter={() => setHasEntered(true)} />}
